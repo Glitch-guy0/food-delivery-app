@@ -1,17 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,11 +13,50 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
+        <Navbar>
+          <Userinfo />
+          <RiShoppingCart2Line className="text-3xl text-blue-600 hover:text-blue-600/80" />
+        </Navbar>
         {children}
       </body>
     </html>
+  );
+}
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+
+// icons
+import { RiShoppingCart2Line } from "react-icons/ri";
+
+function Navbar({ children }: { children: React.ReactNode }) {
+  return (
+    <nav className=" shadow-md w-full min-h-[80px] flex justify-between items-center px-4 lg:px-8 relative">
+      {children}
+    </nav>
+  );
+}
+
+// user info on navbar (completed)
+function Userinfo() {
+  return (
+    <>
+      {/* 
+      avatar
+      username
+      logout
+    */}
+      <div className="flex items-center gap-4  font-bold text-lg h-full">
+        <Avatar className="size-[5vmax] lg:size-[4vmax] text-black ">
+          <AvatarImage src="https://github.com/shadcn.png" alt="DP" />
+          <AvatarFallback>DP</AvatarFallback>
+        </Avatar>
+        <h1 className="text-xl">Username</h1>
+        <Button variant="destructive" className="rounded">
+          Logout
+        </Button>
+      </div>
+    </>
   );
 }
