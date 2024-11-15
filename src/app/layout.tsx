@@ -1,3 +1,8 @@
+
+// TODO:
+// have to get user info through middleware or through here
+// making db call to get user info
+
 import type { Metadata } from "next";
 import "./globals.css";
 
