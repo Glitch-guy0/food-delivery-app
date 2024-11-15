@@ -1,4 +1,3 @@
-
 // TODO:
 // have to get user info through middleware or through here
 // making db call to get user info
@@ -23,7 +22,7 @@ export default function RootLayout({
           <Userinfo />
           <RiShoppingCart2Line className="text-3xl text-blue-600 hover:text-blue-600/80" />
         </Navbar>
-        {children}
+        <Suspense fallback={<Rootloading />}>{children}</Suspense>
       </body>
     </html>
   );
@@ -34,6 +33,8 @@ import { Button } from "@/components/ui/button";
 
 // icons
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { Suspense } from "react";
+import Rootloading from "./loading";
 
 function Navbar({ children }: { children: React.ReactNode }) {
   return (

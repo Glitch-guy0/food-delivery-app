@@ -25,13 +25,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { Input } from "@/components/ui/input";
-
 
 import { FaRupeeSign } from "react-icons/fa";
+// client components
 import { useEffect, useState } from "react";
-
-
 
 
 
